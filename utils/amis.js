@@ -36,7 +36,7 @@ async function fetchCommodityPrices(commodityId, date = null) {
         const commodity = $('#ctl00_cphPage_lblMsg').text().trim();
 
         // Parse the date
-        const displayedDate = date ? date : $('td:contains("Dated:")').first().text().split(':')[1].trim();
+        const displayedDate = date ? date : $('#ctl00_cphPage_Grd table tbody tr:first-child td:first-child').text().replace('Dated:', '').trim();
 
         // Extract the price data
         const prices = [];
