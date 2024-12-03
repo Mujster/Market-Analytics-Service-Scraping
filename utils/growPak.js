@@ -35,7 +35,7 @@ async function searchProducts(searchString) {
             return { title, price: numericPrice, productUrl, imageUrl, soldBy };
         }).get(); // Use .get() to convert to an array
         
-        console.log(products);  // Output extracted data or return it
+        // console.log(products);  // Output extracted data or return it
         return products;
     } catch (error) {
         console.error('Failed to fetch products:', error);

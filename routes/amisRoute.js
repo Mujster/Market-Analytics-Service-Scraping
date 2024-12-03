@@ -5,7 +5,8 @@ const path = require('path');
 
 const router = express.Router();
 
-// Route implementation
+// Route to get analytics (Line Chart) for the crop.
+// Pass the start Date (not old than 2 years) endDate, commodityId, city (optional)
 router.get('/commodity/analytics', async (req, res) => {
     const { startDate, endDate, commodityId, city } = req.query;
 
@@ -75,6 +76,9 @@ router.get('/commodity/analytics', async (req, res) => {
 });
 
 
+// Route to get the price of crop.
+// If the Date is passed it will return the prices of commodity in different cities on date passes
+// Else it will show the same for current / today's Date
 router.get('/commodity/price', async (req, res) => {
     const { commodityId } = req.query;
     const { date } = req.query;
@@ -92,7 +96,7 @@ router.get('/commodity/price', async (req, res) => {
     }
 });
 
-
+// Route to Get List of Commodities (Crops) Along with their IDs (Usable when calling other routes e.g Wheat has id 1)
 router.get('/commodities/names/list', (req, res) => {
     const filePath = path.join(__dirname, '../data', 'commodities.json');
 

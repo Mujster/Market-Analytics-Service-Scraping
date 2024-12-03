@@ -44,10 +44,10 @@ async function searchKissanGharProducts(searchString, exact = false) {
                 return null; // Skip this product if title does not include search string
             }
 
-            return { title, price, imageUrl, productUrl };
+            return { title, price, imageUrl: `https://www.kissanghar.pk/${imageUrl}`, productUrl: `https://www.kissanghar.pk/${productUrl}` };
         }).get().filter(Boolean); // Remove any null values from the result array
 
-        console.log(products);  // Output the extracted data or return it
+        // console.log(products);  // Output the extracted data or return it
         return products;
     } catch (error) {
         console.error('Failed to fetch products:', error);

@@ -14,7 +14,7 @@ end_date = datetime.now()
 start_date = end_date - timedelta(days=2 * 365)  # Approx. 2 years
 
 # Loop through commodity IDs and fetch data
-for commodity_id in range(15, 142):
+for commodity_id in range(18, 142):
     result_data = {"commodityName": "", "data": []}  # Structure for each commodity
     
     # Loop through each day in the date range

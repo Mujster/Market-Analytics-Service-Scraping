@@ -28,7 +28,7 @@ const fetchZareeProductData = async (searchString) => {
         productRow.find('.col').each((i, product) => {
             const productUrl = $(product).find('a.d-block').attr('href');
             const title = $(product).find('h3.fs-13').text().trim();
-            const price = $(product).find('span.fw-700.text-primary').text().trim();
+            const price = parseFloat($(product).find('span.fw-700.text-primary').text().trim().split('.')[1].replace(',', ""));
             const imageUrl = $(product).find('img.img-fit').attr('src');
             
             products.push({

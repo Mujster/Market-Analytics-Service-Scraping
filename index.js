@@ -5,6 +5,7 @@ const kisanShopRoute = require('./routes/kisanShopRoute')
 const zaraeeRoute = require('./routes/zaraeeRoute')
 const farmGharRoute = require('./routes/farmGharRoute')
 const amisRoute = require('./routes/amisRoute')
+const productsRoute = require('./routes/productsRoute')
 
 const app = express()
 const port = 3000
@@ -15,6 +16,8 @@ app.use('/kisanshop', kisanShopRoute);
 app.use('/zaraee', zaraeeRoute);
 app.use('/farmGhar', farmGharRoute);
 app.use('/amis', amisRoute);
+app.use('/products', productsRoute);
+
 
 app.get('/', (req, res) => res.send('Scrapping!'))
 
