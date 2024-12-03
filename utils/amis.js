@@ -76,4 +76,65 @@ async function fetchCommodityPrices(commodityId, date = null) {
     }
 }
 
-module.exports = fetchCommodityPrices;
+// Helper function to calculate the average of an array
+function calculateAverage(values) {
+    const sum = values.reduce((acc, val) => acc + val, 0);
+    return sum / values.length;
+}
+
+function getMonthName(month){
+    if (month == 1){
+        return "JAN";
+    } else if (month == 2){
+        return "FEB";
+    } else if (month == 3){
+        return "MAR";
+    } else if (month == 4){
+        return "APR";
+    } else if (month == 5){
+        return "MAY";
+    } else if (month == 6){
+        return "JUN";
+    } else if (month == 7){
+        return "JUL";
+    } else if (month == 8){
+        return "AUG";
+    } else if (month == 9){
+        return "SEP";
+    } else if (month == 10){
+        return "OCT";
+    } else if (month == 11){
+        return "NOV";
+    } else if (month == 12){
+        return "DEC";
+    }
+}
+
+// Helper function to group data by date range
+function groupData(data, startDate, endDate, groupBy) {
+    const grouped = {};
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    data.forEach((entry) => {
+        const entryDate = new Date(entry.date);
+        if (entryDate >= start && entryDate <= end) {
+            const groupKey =
+                groupBy === 'month'
+                    ? `${entryDate.getFullYear()}-${ getMonthName(entryDate.getMonth() + 1)}`
+                    : groupBy === 'week'
+                    ? entryDate.getDate()
+                    : entry.date;
+
+            if (!grouped[groupKey]) {
+                grouped[groupKey] = [];
+            }
+            grouped[groupKey].push(entry);
+        }
+    });
+
+    return grouped;
+}
+
+
+module.exports = { fetchCommodityPrices, calculateAverage, groupData };

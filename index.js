@@ -16,7 +16,6 @@ app.use('/zaraee', zaraeeRoute);
 app.use('/farmGhar', farmGharRoute);
 app.use('/amis', amisRoute);
 
-
 app.get('/', (req, res) => res.send('Scrapping!'))
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
