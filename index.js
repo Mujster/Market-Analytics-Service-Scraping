@@ -1,25 +1,25 @@
-const express = require('express');
-const app = express();
-const port = 3000;
-const mongoose = require('mongoose');
-const cors = require('cors');
+const express = require('express')
+const growPakRoute = require('./routes/scrapping/growPakRoute')
+const kissanGharRoute = require('./routes/scrapping/kisanGharRoute')
+const kisanShopRoute = require('./routes/scrapping/kisanShopRoute')
+const zaraeeRoute = require('./routes/scrapping/zaraeeRoute')
+const farmGharRoute = require('./routes/scrapping/farmGharRoute')
+const amisRoute = require('./routes/scrapping/amisRoute')
+const productsRoute = require('./routes/scrapping/productsRoute')
 
-app.use(express.json());
-app.use(cors());
+const app = express()
+const port = 3000
 
-const LivestockRoutes=require('./routes/livestock/utility');
-const ProductRoutes=require('./routes/product/utility');
-const PriceListRoutes=require('./routes/priceList/utility');
+app.use('/growpak', growPakRoute);
+app.use('/kissanghar', kissanGharRoute);
+app.use('/kisanshop', kisanShopRoute);
+app.use('/zaraee', zaraeeRoute);
+app.use('/farmGhar', farmGharRoute);
+app.use('/amis', amisRoute);
+app.use('/products', productsRoute);
 
-mongoose.connect('mongodb://localhost:27017/marketprice', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true})
-.then(() => console.log('Connected to MongoDB'))
-.catch(err => console.error('Could not connect to MongoDB', err));
 
-app.get('/', (req, res) => res.send('Market Price Analytics Service !'));
-
-app.use('/livestock', LivestockRoutes);
-app.use('/product', ProductRoutes);
-app.use('/pricelist', PriceListRoutes);
+app.get('/', (req, res) => res.send('Scrapping!'))
 
 app.listen(port, () => console.log(`Service Running on ${port}!`));
 
