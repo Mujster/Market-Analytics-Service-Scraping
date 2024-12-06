@@ -3,6 +3,7 @@ const fetchAllFarmGharListings = require('../../utils/farmGhar');
 
 const router = express.Router();
 
+// This will return the available listing of livestock on FarmGhar against a search query
 router.get('/listings', async (req, res) => {
     const { searchString } = req.query;  
     
