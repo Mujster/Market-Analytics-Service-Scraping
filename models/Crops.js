@@ -132,7 +132,7 @@ mongoose
 // Export the Crops model
 export default Crops;*/
 
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 // Destructure schema from mongoose
 const { Schema } = mongoose;
@@ -200,7 +200,7 @@ mongoose
   });
 
 // Export the Crops model
-export default Crops;
+module.exports = Crops;
 
 
 

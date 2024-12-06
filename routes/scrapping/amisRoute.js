@@ -14,7 +14,7 @@ router.get('/commodity/analytics', async (req, res) => {
         return res.status(400).json({ error: 'CommodityId, startDate, and endDate are required.' });
     }
 
-    const filePath = path.join(__dirname, '../data', `commodity_${commodityId}.json`);
+    const filePath = path.join(__dirname, '../../data', `commodity_${commodityId}.json`);
 
     // Check if the file exists
     if (!fs.existsSync(filePath)) {
@@ -47,7 +47,7 @@ router.get('/commodity/analytics', async (req, res) => {
                     .map((price) => ({
                         min: price.min,
                         max: price.max,
-                        fqp: price.fqp,
+                        fqp: price.fqp
                     }))
             );
 
@@ -98,7 +98,7 @@ router.get('/commodity/price', async (req, res) => {
 
 // Route to Get List of Commodities (Crops) Along with their IDs (Usable when calling other routes e.g Wheat has id 1)
 router.get('/commodities/names/list', (req, res) => {
-    const filePath = path.join(__dirname, '../data', 'commodities.json');
+    const filePath = path.join(__dirname, '../../data', 'commodities.json');
 
     // Check if the file exists
     if (!fs.existsSync(filePath)) {
